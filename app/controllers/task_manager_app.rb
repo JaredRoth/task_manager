@@ -16,14 +16,15 @@ class TaskManagerApp < Sinatra::Base
     erb :new
   end
 
-  post '/tasks' do
-    task_manager.create(params[:task])
-    redirect '/tasks'
-  end
-
   get '/tasks/:id' do |id|
     @task = task_manager.find(id.to_i)
     erb :show
+  end
+
+
+  post '/tasks' do
+    task_manager.create(params[:task])
+    redirect '/tasks'
   end
 
   def task_manager
