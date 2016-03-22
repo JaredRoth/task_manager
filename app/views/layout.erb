@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/bootstrap.css">
+  <title>Task Manager</title>
+</head>
+<body>
+  <nav class="col-md-12 navbar navbar-default navbar-static-top">
+    <a href="/" class="navbar-brand">Task Manager</a>
+    <ul class="nav navbar-nav">
+      <li><a href="/tasks">Task Index</a></li>
+      <li><a href="/tasks/new">New Task</a></li>
+    </ul>
+  </nav>
+  <div class="container-fluid">
+    <%= yield %>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="/bootstrap.min.js"></script>
+</body>
+</html>

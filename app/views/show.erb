@@ -1,5 +1,11 @@
-<a href="/tasks">Task Index</a>
+<div class="row well">
+  <h3 class="col-md-offset-1 col-md-6"><%= @task.title %></h3>
 
-<h1><%= @task.title %></h1>
+  <a class="btn btn-primary col-md-1" href="/tasks/<%=@task.id%>/edit" role="button">Edit Task</a>
 
-<p><%= @task.description %></p>
+  <form class="col-md-1" action="/tasks/<%=@task.id%>" method="delete">
+    <input class="btn btn-danger" type="submit" value="Remove Task">
+  </form>
+</div>
+
+<p class="col-md-offset-1 col-md-6"><%= @task.description %></p>

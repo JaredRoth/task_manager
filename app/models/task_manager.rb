@@ -34,4 +34,8 @@ class TaskManager
   def find(id)
     Task.new(raw_task(id))
   end
+
+  def delete(id)
+    
+  end
 end

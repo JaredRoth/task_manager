@@ -1,18 +1,19 @@
 ---
 tasks:
 - id: 1
-  title: New Task
-  description: Do 'things' with my wife
+  title: Finish styling this site
+  description: Primarily focus on the form page (iss ugly) and the task list. Possibly
+    consider additional functionality for removing tasks.
 - id: 2
-  title: Second task
-  description: Finish task manager
+  title: Style Task list
+  description: Do it
 - id: 3
-  title: Third Task
-  description: Do all the things
+  title: Go over styling
+  description: Do this with Ashwin
 - id: 4
-  title: Fourth Task
-  description: This is where we are told things about the task
+  title: Remove tasks
+  description: Create way to remove tasks from list
 - id: 5
-  title: Fifth Task
-  description: Don't we have enough tasks already?
+  title: Testing out if id works
+  description: Does it?
 total: 5
