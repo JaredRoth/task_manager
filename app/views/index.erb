@@ -12,11 +12,14 @@
       <td><a href="/tasks/<%=task.id%>"><%= task.id %></a></td>
       <td><a href="/tasks/<%=task.id%>"><%= task.title %></a></td>
       <td class="col-md-1">
-        <a class="btn btn-primary" href="/tasks/<%=task.id%>/edit" role="button">Edit Task</a>
+        <a class="btn btn-primary" role="button" href="/tasks/<%=task.id%>/edit">Edit Task</a>
       </td>
-      <td class="col-md-1"><form class="col-md-1" action="/tasks/<%=task.id%>" method="delete">
-        <button class="btn btn-danger" type="submit">Remove Task</button>
-      </form></td>
+      <td class="col-md-1">
+        <form class="col-md-1" action="/tasks/<%=task.id%>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button class="btn btn-danger" type="submit">Remove Task</button>
+        </form>
+      </td>
     </tr>
   <% end %>
 </table>

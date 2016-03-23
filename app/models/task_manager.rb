@@ -35,7 +35,24 @@ class TaskManager
     Task.new(raw_task(id))
   end
 
+  def update(id, task)
+    database.transaction do
+      target = database['tasks'].find {|data| data["id"] == id}
+      target["title"]       = task[:title]
+      target["description"] = task[:description]
+    end
+  end
+
   def delete(id)
-    
+    database.transaction do
+      database['tasks'].delete_if {|task| task['id'] == id}
+    end
+    database.transaction {database['total'] = 0}
+    database.transaction do
+      database['tasks'].each do |hash|
+        database['total'] += 1
+        hash["id"] = database['total']
+      end
+    end
   end
 end

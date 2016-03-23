@@ -3,8 +3,9 @@
 
   <a class="btn btn-primary col-md-1" href="/tasks/<%=@task.id%>/edit" role="button">Edit Task</a>
 
-  <form class="col-md-1" action="/tasks/<%=@task.id%>" method="delete">
-    <input class="btn btn-danger" type="submit" value="Remove Task">
+  <form class="col-md-1" action="/tasks/<%=@task.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button class="btn btn-danger" type="submit">Remove Task</button>
   </form>
 </div>
 

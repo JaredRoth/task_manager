@@ -1,17 +1,30 @@
-<form action="/tasks/<%= @task.id %>" method="put">
-  <div class="col-md-6 col-md-offset-1">
-    <div class="form-group">
-      <label for="title">Title:</label>
-      <input type="text" class="form-control" name="task[title]" value="<%= @task.title %>" id="title"/><br/>
+<div class="row">
+  <form action="/tasks/<%= @task.id %>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <div class="col-md-6 col-md-offset-1">
+
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" name="task[title]" value="<%= @task.title %>" id="title"/><br/>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea name="task[description]" class="form-control" id="description"><%= @task.description %></textarea><br/>
+      </div>
+
+      <!-- buttons -->
+      <input class="btn btn-success" type="submit" value="Save Changes">
+      <a class="btn btn-warning" href="/tasks" role="button">Discard Changes</a>
+
+
     </div>
-    <div class="form-group">
-      <label for="description">Description:</label>
-      <textarea name="task[description]" class="form-control" id="description"><%= @task.description %></textarea><br/>
-    </div>
-    <input class="btn btn-success" type="submit" value="Save Changes">
-    <a class="btn btn-warning" href="/tasks" role="button">Discard Changes</a>
-    <form class="col-md-1" action="/tasks/<%=@task.id%>" method="delete">
-      <input class="btn btn-danger" type="submit" value="Remove Task Completely">
-    </form>
-  </div>
-</textarea>
+  </form>
+</div>
+<br>
+<div class="row">
+  <form class="col-md-3 col-md-offset-1" action="/tasks/<%=@task.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input class="btn btn-danger" type="submit" value="Remove Task Completely">
+  </form>
+</div>
