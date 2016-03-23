@@ -102,10 +102,11 @@ class TaskManagerTest < Minitest::Test
     assert_equal "a third title", all[2].title
     assert_equal "another title", all[1].title
 
-    task_manager.delete(2)
+    task_manager.destroy(2)
     all = task_manager.all
     assert_equal 2, all.length
     assert_equal "a third title", all[1].title
+    assert_equal "a title", all[0].title
 
   end
 end
