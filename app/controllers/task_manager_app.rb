@@ -39,7 +39,11 @@ class TaskManagerApp < Sinatra::Base
   end
 
   def task_manager
-    database = YAML::Store.new('db/task_manager')
+    if ENV["RACK_ENV"] == "test"
+      database = YAML::Store.new('db/task_manager_test')
+    else
+      database = YAML::Store.new('db/task_manager')
+    end
     @task_manager ||= TaskManager.new(database)
   end
 end

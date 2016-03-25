@@ -3,4 +3,7 @@ tasks:
 - id: 1
   title: Fix delete issue layout
   description: ''
-total: 1
+- id: 2
+  title: Temporary Task
+  description: This is sadly temporary
+total: 2
