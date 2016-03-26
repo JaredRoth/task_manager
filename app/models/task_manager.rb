@@ -8,18 +8,11 @@ class TaskManager
   end
 
   def create(task)
-    database.transaction do
-      database['tasks'] ||= []
-      database['total'] ||= 0
-      database['total'] += 1
-      database['tasks'] << {"id" => database['total'], "title" => task[:title], "description" => task[:description]}
-    end
+    database.from(:tasks).insert(task)
   end
 
   def raw_tasks
-    database.transaction do
-      database['tasks'] || []
-    end
+    database.from(:tasks)
   end
 
   def all
@@ -27,7 +20,7 @@ class TaskManager
   end
 
   def raw_task(id)
-    raw_tasks.find {|task| task["id"] == id}
+    database.from(:tasks).where(:id => id).to_a.first
   end
 
   def find(id)
@@ -35,30 +28,14 @@ class TaskManager
   end
 
   def update(id, task)
-    database.transaction do
-      target = database['tasks'].find {|data| data["id"] == id}
-      target["title"]       = task[:title]
-      target["description"] = task[:description]
-    end
+    database.from(:tasks).where(:id => id).update(task)
   end
 
   def destroy(id)
-    database.transaction do
-      database['tasks'].delete_if {|task| task['id'] == id}
-    end
-    database.transaction {database['total'] = 0}
-    database.transaction do
-      database['tasks'].each do |hash|
-        database['total'] += 1
-        hash["id"] = database['total']
-      end
-    end
+    database.from(:tasks).where(:id => id).delete
   end
 
   def delete_all
-    database.transaction do
-      database['tasks'] = []
-      database['total'] = 0
-    end
+    database.from(:tasks).delete
   end
 end

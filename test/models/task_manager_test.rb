@@ -54,7 +54,7 @@ class TaskManagerTest < Minitest::Test
     assert_equal "a changed title", after.title
     assert_equal "a changed description", after.description
   end
-
+  
   def test_it_destroys_a_task
     create_tasks(3)
 
