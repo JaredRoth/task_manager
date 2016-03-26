@@ -9,6 +9,11 @@ require "tilt/erb"
 Capybara.app = TaskManagerApp
 
 module TestHelpers
+  def setup
+    task_manager.delete_all
+    super
+  end
+
   def teardown
     task_manager.delete_all
     super
@@ -22,7 +27,6 @@ module TestHelpers
   def create_tasks(num = 2)
     num.times do |i|
       task_manager.create({
-        :id => i + 1,
         :title => "Task Title #{i + 1}",
         :description => "Task Description #{i + 1}"
         })
